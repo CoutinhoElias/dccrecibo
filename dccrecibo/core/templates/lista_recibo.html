@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% block content %}
+       <nav>
+            <div class="nav-wrapper blue">
+                  <form>
+                        <div class="input-field">
+                              <input id="searchInput" name="searchInput" type="search" required>
+                              <label class="label-icon" for="searchInput"><i class="material-icons">search</i></label>
+                              <i class="material-icons">close</i>
+                        </div>
+                  </form>
+            </div>
+       </nav>
+
+
+      <table class="striped responsive-table">
+        <thead>
+          <tr>
+              <th>Nr.</th>
+              <th>Cliente</th>
+              <th>Data</th>
+              <th>Veículo</th>
+              <th>Valor</th>
+              <th>Chassi</th>
+              <th>Cor</th>
+              <th>Forma Pagamento</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            {% for receipt in receipts %}
+                <tr>
+                    <td>{{ receipt.person.cdalterdata }}</td>
+                    <td>{{ receipt.person }}</td>
+                    <td>{{ receipt.created|date:"d/m/Y" }}</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ receipt.vehicle|linebreaks }}</td>
+                    <td>{{ receipt.value_total|floatformat:"2" }}</td>
+                    <td>{{ receipt.chassis }}</td>
+                    <td>{{ receipt.color }}</td>
+                    <td>{{ receipt.form_of_payment }}</td>
+                    <td><a href="{{ receipt.get_absolute_url }}" ><i class="medium material-icons">local_printshop</i></a></td>
+
+                </tr>
+            {% empty %}
+                <li>
+                    Sem registros
+                </li>
+            {% endfor %}
+        </tbody>
+      </table>'
+{% endblock %}

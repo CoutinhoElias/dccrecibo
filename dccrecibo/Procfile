@@ -1,0 +1,1 @@
+web: gunicorn dccrecibo.wsgi --log-file -
