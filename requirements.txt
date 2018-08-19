@@ -8,6 +8,7 @@ dj-static==0.0.6
 Django==2.1
 html5lib==1.0.1
 httplib2==0.11.3
+num2words==0.5.7
 pdfrw==0.4
 Pillow==5.2.0
 pycparser==2.18
@@ -22,5 +23,3 @@ tinycss2==0.6.1
 WeasyPrint==0.42.3
 webencodings==0.5.1
 xhtml2pdf==0.2.2
-gunicorn==19.8.1
-psycopg2==2.7.4
