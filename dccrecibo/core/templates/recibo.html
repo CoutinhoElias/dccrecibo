@@ -12,24 +12,23 @@
 		<h1>D&G COMÉRCIO DE AUTOPEÇAS LTDA<br/>RECIBO</h1>
         <img class="img-topo" src="{% static 'img/logo.png' %}">
         <br><br><br>
-		<label class="rs-topo">R${{recibo.value_total|floatformat:"2"}}</label>
 		<div class="text_justificado">
             Recebi(emos) de <label name="recebido" class="recebido">{{recibo.person}}</label>
 			a quantia de R$<label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label>
-			(<label name="recebido" class="quantia">{{recibo.value_total|floatformat:"2"}}</label>)<br/>
-			Referente:<br/>
+			(<label>{{recibo.number_in_full}}</label>)<br/>
+			Referente aos ítens abaixo:<br/>
                     <table>
                         <thead>
                             <tr>
                                 <th>Tipo</th>
                                 <th>Descrição</th>
-                                <th class="col_center">Valor</th>
+                                <th class="col_center">Forma de Pagamento</th>
                         </thead>
                         <tbody>
                             {% for movement in movements %}
                                 <tr>
                                     <td class="col_left">{{ movement.kind }}</td>
-                                    <td class="col_left">{{ movement.description }}</td>
+                                    <td class="col_left">{{ movement.form_of_payment }}</td>
                                     <td class="col_right">{{ movement.value_moved|floatformat:"2" }}</td>
                                 </tr>
                             {% empty %}
@@ -39,15 +38,18 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    <label class="total_table">R${{recibo.value_total|floatformat:"2"}}</label>
 
+            <br>
 			Veículo: <label name="recebido" class="recebido">{{recibo.vehicle}}</label>
             <br>
 			Chassi:  <label name="recebido" class="recebido">{{recibo.chassis}}</label>
             <br>
 			Cor:     <label name="recebido" class="recebido">{{recibo.color}}</label>
             <br>
-			Forma de pagamento: <label name="recebido" class="recebido">{{recibo.form_of_payment}}</label>
+			Computador:     <label name="recebido" class="recebido">{{recibo.host_name}}</label>
             <br>
+
 
 			Para maior clareza firmamos o presente.<br/>
 			Fortaleza (CE), <label name="recebido" class="recebido">{{recibo.created}}</label> <br><br>

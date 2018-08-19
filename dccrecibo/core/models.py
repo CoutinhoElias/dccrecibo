@@ -1,8 +1,13 @@
+import socket
+
 from django.db import models
 
 # Create your models here.
 from django.db.models import Sum
 from django.urls import reverse
+
+
+from num2words import num2words
 
 
 class Person(models.Model):
@@ -21,13 +26,20 @@ class Receipt(models.Model):
     vehicle = models.CharField('Veículo',max_length=100)
     chassis = models.CharField('Chassi', max_length=100)
     color = models.CharField('Cor', max_length=100)
-    form_of_payment = models.CharField('Forma de pagamento', max_length=100)
     created = models.DateTimeField('created', auto_now_add=True)
     modified = models.DateTimeField('modified', auto_now=True)
 
     @property
     def value_total(self):
-        return ReceiptMovimento.objects.all().aggregate(Sum('value_moved'))['value_moved__sum']
+        return ReceiptMovimento.objects.filter(receipt_id=self.id).aggregate(Sum('value_moved'))['value_moved__sum']
+
+    @property
+    def number_in_full(self):
+        return num2words(self.value_total,to='currency',lang='pt_BR')
+
+    @property
+    def host_name(self):
+        return socket.gethostbyaddr(socket.gethostname())
 
     class Meta:
         verbose_name = 'Recibo'
@@ -39,17 +51,25 @@ class Receipt(models.Model):
     def get_absolute_url(self):
         return reverse('core:admin_receipt_pdf', args=[str(self.id)])
 
+TRANSACTION_PAYMENT = (
+    ("DINHEIRO", "DINHEIRO"),
+    ("CARTÃO DE CRÉDITO", "CARTÃO DE CRÉDITO"),
+    ("CARTÃO DE DÉBITO", "CARTÃO DE DÉBITO"),
+    ("CHEQUE", "CHEQUE")
+)
 
 TRANSACTION_KIND = (
-    ("servico", "SERVIÇO"),
-    ("produto", "PRODUTO")
+    ("ACESSÓRIOS", "ACESSÓRIOS"),
+    ("SERVIÇO DE INSTALACÃO", "SERVIÇO DE INSTALACÃO"),
+    ("ACESSÓRIOS E INSTALACÃO", "ACESSÓRIOS E INSTALACÃO")
 )
 
 
 class ReceiptMovimento(models.Model):
     receipt = models.ForeignKey('core.Receipt', related_name='recibo_item', on_delete=models.CASCADE, verbose_name='Recibo')
-    kind = models.CharField('Tipo Movimento', max_length=10, choices=TRANSACTION_KIND)
-    description = models.CharField('Nome',max_length=100)
+    kind = models.CharField('Tipo Movimento', max_length=30, choices=TRANSACTION_KIND)
+    #description = models.CharField('Nome',max_length=100)
+    form_of_payment = models.CharField('Forma de pagamento', max_length=30, choices=TRANSACTION_PAYMENT)
     value_moved = models.DecimalField('Valor Movimento', max_digits=10, decimal_places=2)
 
 

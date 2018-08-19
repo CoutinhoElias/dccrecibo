@@ -10,7 +10,7 @@ from django.template.loader import get_template
 from django.views.generic import View
 
 from dccrecibo.core.models import Receipt, ReceiptMovimento
-from dccrecibo.utils import render_to_pdf #created in step 4
+from dccrecibo.utils import render_to_pdf# created in step 4
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -70,5 +70,4 @@ def receipt_return(request):
     else:
         receipts = Receipt.objects.select_related('person').all().order_by('created')
     context = {'receipts': receipts}
-    print(context, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
     return render(request, 'lista_recibo.html', context)

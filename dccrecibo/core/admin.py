@@ -12,10 +12,13 @@ class ReceiptMovimentoInline(admin.TabularInline):
 class ReceiptModelAdmin(admin.ModelAdmin):
     readonly_fields = ['value_total']
     inlines = [ReceiptMovimentoInline]
-    list_display = ['person', 'value_total', 'vehicle', 'chassis', 'color', 'form_of_payment']
+    list_display = ['person', 'value_total', 'vehicle', 'chassis', 'color']
 
     def value_total(self, obj):
-        return '%.2f' % obj.value_total
+        if not obj.value_total:
+            return obj.value_total
+        else:
+            return '%.2f' % obj.value_total
 
 
 admin.site.register(Person)

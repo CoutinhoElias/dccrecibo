@@ -23,7 +23,7 @@
               <th>Valor</th>
               <th>Chassi</th>
               <th>Cor</th>
-              <th>Forma Pagamento</th>
+{#              <th>Forma Pagamento</th>#}
           </tr>
         </thead>
 
@@ -37,7 +37,7 @@
                     <td>{{ receipt.value_total|floatformat:"2" }}</td>
                     <td>{{ receipt.chassis }}</td>
                     <td>{{ receipt.color }}</td>
-                    <td>{{ receipt.form_of_payment }}</td>
+{#                    <td>{{ receipt.form_of_payment }}</td>#}
                     <td><a href="{{ receipt.get_absolute_url }}" ><i class="medium material-icons">local_printshop</i></a></td>
 
                 </tr>

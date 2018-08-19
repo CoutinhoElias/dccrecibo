@@ -89,6 +89,18 @@ h1 {
 	width: 130px;
 }
 
+.total_table{
+
+    background-color: #b7b7b7;
+    border-radius: 10px;
+	position: absolute;
+	right: 1px;
+	font-size: 25px;
+	font-weight: 600;
+    width: 250px;
+	text-align: center;
+}
+
 
 footer{
     display: block;
@@ -98,12 +110,3 @@ footer{
     margin-bottom: -10%;
 
 }
-
-/*.cl-3{*/
-	/*width: 27.5%;*/
-	/*float: left;*/
-/*}*/
-/*.cl-6{*/
-	/*width: 45%;*/
-	/*float: left;*/
-/*}*/
