@@ -20,6 +20,11 @@ class ReceiptModelAdmin(admin.ModelAdmin):
         else:
             return '%.2f' % obj.value_total
 
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'author', None) is None:
+            obj.author = request.user
+        obj.save()
+
 
 admin.site.register(Person)
 admin.site.register(Receipt, ReceiptModelAdmin)

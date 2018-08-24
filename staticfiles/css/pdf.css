@@ -25,6 +25,10 @@ table th, table td {
     margin:0;
 }
 
+.td_numerico{
+    text-align: right;
+}
+
 tbody tr:nth-child(odd) {
     background:#efefef;
 }

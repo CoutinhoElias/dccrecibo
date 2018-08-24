@@ -13,10 +13,8 @@
         <img class="img-topo" src="{% static 'img/logo.png' %}">
         <br><br><br>
 		<div class="text_justificado">
-            Recebi(emos) de <label name="recebido" class="recebido">{{recibo.person}}</label>
-			a quantia de R$<label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label>
-			(<label>{{recibo.number_in_full}}</label>)<br/>
-			Referente aos ítens abaixo:<br/>
+            Recebi(emos) de <label name="recebido" class="recebido">{{recibo.person}}</label>, CPF/CNPJ {{recibo.person.cpf_cnpj}}, o  valor de R$<label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label>
+			(<label>{{recibo.number_in_full}}</label>), referente aos ítens abaixo:<br/>
                     <table>
                         <thead>
                             <tr>
@@ -27,9 +25,9 @@
                         <tbody>
                             {% for movement in movements %}
                                 <tr>
-                                    <td class="col_left">{{ movement.kind }}</td>
-                                    <td class="col_left">{{ movement.form_of_payment }}</td>
-                                    <td class="col_right">{{ movement.value_moved|floatformat:"2" }}</td>
+                                    <td>{{ movement.kind }}</td>
+                                    <td>{{ movement.form_of_payment }}</td>
+                                    <td class="td_numerico">{{ movement.value_moved|floatformat:"2" }}</td>
                                 </tr>
                             {% empty %}
                                 <li>
@@ -47,15 +45,17 @@
             <br>
 			Cor:     <label name="recebido" class="recebido">{{recibo.color}}</label>
             <br>
-			Computador:     <label name="recebido" class="recebido">{{recibo.host_name}}</label>
-            <br>
 
 
 			Para maior clareza firmamos o presente.<br/>
 			Fortaleza (CE), <label name="recebido" class="recebido">{{recibo.created}}</label> <br><br>
 			<label class="assinatura">
 				<input type="text" name="quantiatext" class="quantia">
-				Ass. Vendedor de Acessórios
+				Ass. <label name="recebido" class="recebido">{{recibo.author|upper}}</label>
+                <br>
+                Vendedor de Acessórios
+                <br>
+                D&G Com. Autopeças Ltda
 			</label>
 		</div>
 	</form>

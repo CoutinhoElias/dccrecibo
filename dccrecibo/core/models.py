@@ -1,5 +1,6 @@
 import socket
 
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -13,6 +14,7 @@ from num2words import num2words
 class Person(models.Model):
     cdalterdata = models.CharField('Cód. Alterdata', max_length=6)
     name = models.CharField('Nome',max_length=100)
+    cpf_cnpj = models.CharField('CPF/CNPJ', max_length=18)
 
     def __str__(self):
         return self.name
@@ -22,12 +24,13 @@ class Person(models.Model):
         verbose_name = 'Pessoa'
 
 class Receipt(models.Model):
-    person = models.ForeignKey('core.Person', related_name='person_item',on_delete=models.CASCADE, verbose_name='Cliente')
+    person = models.ForeignKey('core.Person', related_name='person_item', on_delete=models.CASCADE, verbose_name='Cliente')
     vehicle = models.CharField('Veículo',max_length=100)
     chassis = models.CharField('Chassi', max_length=100)
     color = models.CharField('Cor', max_length=100)
     created = models.DateTimeField('created', auto_now_add=True)
     modified = models.DateTimeField('modified', auto_now=True)
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE,)
 
     @property
     def value_total(self):
