@@ -13,6 +13,9 @@
     </head>
 
     <body>
+
+
+
       <nav>
         <div class="nav-wrapper #607d8b blue-grey">
           <a href="{% url 'core:receipt_return'  %}" class="brand-logo"><img class="img-topo" src="{% static 'img/logo.png' %}"></a>
@@ -25,9 +28,10 @@
       </nav>
 
       <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Lista</a></li>
-        <li><a href="badges.html">Administrador</a></li>
+            <li><a href="{% url 'core:receipt_return'  %}">Lista</a></li>
+            <li><a href="https://dccrecibo.herokuapp.com/admin/">Administrador</a></li>
       </ul>
+
 
       <div class="container">
         {% if messages %}
@@ -41,7 +45,18 @@
         {% endblock content %}
       </div>
 
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+      <script type="text/javascript">
+          $(document).ready(function(){
+            $('.sidenav').sidenav();
+          });
+      </script>
     </body>
-  </html>
+ </html>
