@@ -31,6 +31,8 @@ class Receipt(models.Model):
     created = models.DateTimeField('created', auto_now_add=True)
     modified = models.DateTimeField('modified', auto_now=True)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE,)
+    observation = models.CharField('Observações', max_length=200)
+
 
     @property
     def value_total(self):

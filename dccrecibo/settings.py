@@ -115,7 +115,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+DECIMAL_SEPARATOR = ','
+USE_THOUSAND_SEPARATOR = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 

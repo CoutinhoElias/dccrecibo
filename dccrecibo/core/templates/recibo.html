@@ -13,14 +13,14 @@
         <img class="img-topo" src="{% static 'img/logo.png' %}">
         <br><br><br>
 		<div class="text_justificado">
-            Recebi(emos) de <label name="recebido" class="recebido">{{recibo.person}}</label>, CPF/CNPJ {{recibo.person.cpf_cnpj}}, o  valor de R$<label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label>
-			(<label>{{recibo.number_in_full}}</label>), referente aos ítens abaixo:<br/>
+            Recebemos de <label name="recebido" class="recebido">{{recibo.person}}</label>, CPF/CNPJ {{recibo.person.cpf_cnpj}}, o  valor de R$<label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label>
+			(<label>{{recibo.number_in_full}}</label>), referente aos itens abaixo:<br/>
                     <table>
                         <thead>
                             <tr>
                                 <th>Tipo</th>
-                                <th>Descrição</th>
-                                <th class="col_center">Forma de Pagamento</th>
+                                <th>Forma de Pagamento</th>
+                                <th class="col_center">Valor</th>
                         </thead>
                         <tbody>
                             {% for movement in movements %}
@@ -45,6 +45,11 @@
             <br>
 			Cor:     <label name="recebido" class="recebido">{{recibo.color}}</label>
             <br>
+            Recibo Nr.:     <label name="recebido" class="recebido">{{recibo.id|stringformat:"06d"}}</label>
+            <br>
+            Observações: <label name="recebido" class="recebido">{{recibo.observation}}</label>
+            <br>
+            <br>
 
 
 			Para maior clareza firmamos o presente.<br/>
@@ -53,7 +58,7 @@
 				<input type="text" name="quantiatext" class="quantia">
 				Ass. <label name="recebido" class="recebido">{{recibo.author|upper}}</label>
                 <br>
-                Vendedor de Acessórios
+                Vendedor(a)
                 <br>
                 D&G Com. Autopeças Ltda
 			</label>
@@ -63,8 +68,9 @@
     <footer>
         <span>
             <b>D&G COMÉRCIO DE AUTOPEÇAS LTDA.</b><br/>
-            Rua Capitão Melo, 4112 • São João do Taubape • CEP 60.120-095<br/>
-            Fortaleza - CE • CNPJ: 14.045.341.0001/98 • Fone: (85) 3077-0900
+            CNPJ Ceará: 14.045.341.0001/98 • Piauí: 14.045.341.0002/79
+            Paraíba: 14.045.341.0003/50 • Pernambuco: 14.045.341.0004/30
+            Telefone (85) 3077-0900
         </span>
     {#  <p>Posted by: Hege Refsnes</p>#}
     {#  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>#}
