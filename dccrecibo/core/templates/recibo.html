@@ -9,18 +9,18 @@
 <body>
 	<form class="container clearfix">
 
-		<h1>D&G COMÉRCIO DE AUTOPEÇAS LTDA<br/>RECIBO</h1>
+		<h1>DCC AUTOMOTIVE<br/>RECIBO</h1>
         <img class="img-topo" src="{% static 'img/logo.png' %}">
         <br><br><br>
 		<div class="text_justificado">
-            Recebemos de <label name="recebido" class="recebido">{{recibo.person}}</label>, CPF/CNPJ {{recibo.person.cpf_cnpj}}, o  valor de R$<label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label>
+            Recebemos de <strong><label name="recebido" class="recebido">{{recibo.person}}</label></strong>, CPF/CNPJ {{recibo.person.cpf_cnpj}}, o  valor de <strong>R$ <label name="recebido" class="recebido">{{recibo.value_total|floatformat:"2"}}</label></strong>
 			(<label>{{recibo.number_in_full}}</label>), referente aos itens abaixo:<br/>
                     <table>
                         <thead>
                             <tr>
                                 <th>Tipo</th>
                                 <th>Forma de Pagamento</th>
-                                <th class="col_center">Valor</th>
+                                <th class="col_center">Valor R$</th>
                         </thead>
                         <tbody>
                             {% for movement in movements %}
@@ -36,7 +36,7 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                    <label class="total_table">R${{recibo.value_total|floatformat:"2"}}</label>
+                    <label class="total_table">R$ {{recibo.value_total|floatformat:"2"}}</label>
 
             <br>
 			Veículo: <label name="recebido" class="recebido">{{recibo.vehicle}}</label>
@@ -52,11 +52,10 @@
             <br>
 
 
-			Para maior clareza firmamos o presente.<br/>
 			Fortaleza (CE), <label name="recebido" class="recebido">{{recibo.created}}</label> <br><br>
 			<label class="assinatura">
 				<input type="text" name="quantiatext" class="quantia">
-				Ass. <label name="recebido" class="recebido">{{recibo.author|upper}}</label>
+				<label name="recebido" class="recebido">{{recibo.author|upper}}</label>
                 <br>
                 Vendedor(a)
                 <br>
@@ -68,9 +67,9 @@
     <footer>
         <span>
             <b>D&G COMÉRCIO DE AUTOPEÇAS LTDA.</b><br/>
-            CNPJ Ceará: 14.045.341.0001/98 • Piauí: 14.045.341.0002/79
-            Paraíba: 14.045.341.0003/50 • Pernambuco: 14.045.341.0004/30
-            Telefone (85) 3077-0900
+                CNPJ Ceará: 14.045.341/0001-98 • Piauí: 14.045.341/0002-79
+                Paraíba: 14.045.341/0003-50 • Pernambuco: 14.045.341/0004-30<br/>
+                Telefone (85) 3077-0900
         </span>
     {#  <p>Posted by: Hege Refsnes</p>#}
     {#  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>#}
