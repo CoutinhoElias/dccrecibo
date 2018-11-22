@@ -71,3 +71,5 @@ def receipt_return(request):
         receipts = Receipt.objects.select_related('person').all().order_by('created')
     context = {'receipts': receipts}
     return render(request, 'lista_recibo.html', context)
+
+#DEFINIR NOVO RECIBO COMO
