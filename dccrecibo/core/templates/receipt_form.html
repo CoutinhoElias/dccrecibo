@@ -1,0 +1,63 @@
+{% extends "account/base.html" %}
+{% load widget_tweaks %}
+{% load staticfiles i18n compress%}
+{% load material_form %}
+{% load i18n %}
+
+{% block inner %}
+    <form method="post" role="form" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+
+        <fieldset>
+          {% form form=form %}
+
+          {% endform %}
+        </fieldset>
+
+        <fieldset>
+            <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp mdl-data-table__cell--non-numeric">
+                <thead class="#cfd8dc blue-grey lighten-4">
+                    <th class="mdl-data-table__cell--non-numeric" >Produto</th>
+                    <th class="mdl-data-table__cell--non-numeric">Quantidade</th>
+                    <th>Preço unitário</th>
+                    <th>Outros Custos</th>
+                    <th>Total</th>
+                    <th></th>
+                </thead>
+
+                {{ formset.management_form }}
+
+                <tbody>
+                {% for item_form in formset %}
+                    {% for hidden in item_form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+
+
+                    <tr class="item-form">
+                        <td>{{ item_form.title.errors }} {{ item_form.title }}</td>
+                        <td>{{ item_form.quantity.errors }} {% render_field item_form.quantity class+="qtd" %}</td>
+                        <td>{{ item_form.unit_price.errors }} {% render_field item_form.unit_price class+="vl" %}</td>
+                        <td>{{ item_form.other_costs.errors }} {% render_field item_form.other_costs class+="vl" %}</td>
+                        <td>{{ item_form.instance.total }}</td>
+                        <td class=""></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+        </fieldset>
+
+        <br><br>
+
+        <button class="btn waves-effect waves-light" type="submit" name="action">Gravar<i class="material-icons right">send</i></button>
+
+        <a href="{% url 'checkout:invoice_list' %}" class="btn waves-effect waves-light">Invoice list</a>
+    </form>
+
+{% endblock %}
+
+{% block js %}
+
+  <script src="{% static 'js/jquery.formset.min.js' %}"></script>
+  <script src="{% static 'js/invoice_form.js' %}"></script>
+ 
+{% endblock %}

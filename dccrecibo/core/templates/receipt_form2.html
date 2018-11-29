@@ -1,0 +1,50 @@
+{% extends "account/base.html" %}
+{% load widget_tweaks %}
+{% load staticfiles i18n compress %}
+{% load material_form %}
+{% load i18n %}
+
+{% block inner %}
+
+    <form action="{{ form_action }}" method="post"
+          role="form" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form }}
+        <div class="divider"></div>
+        <div id="inlines">
+            <h3>Inlines:</h3>
+            {% for inline in inlines %}
+
+
+                {{ inline.management_form }}
+                {% for form in inline %}
+                    Inline {{ forloop.counter }}
+                    {% for form_field in form %}
+                        {{ form_field }}
+                    {% endfor %}
+                {% endfor %}
+            <div class="divider"></div>
+            {% endfor %}
+        </div>
+
+        <a href="{{ form_action }}" class="btn">Cancelar</a>
+          <input class="btn waves-effect waves-light" type="submit" name="action">Gravar<i class="material-icons right">send</i></input>
+
+
+    </form>
+{% endblock %}
+
+{% block js %}
+
+
+    {% if form.media %}
+        {{ form.media }}
+    {% endif %}
+    {% for inline in inlines %}
+        {% if inline.media %}
+            {{ inline.media }}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
