@@ -12,9 +12,9 @@ from num2words import num2words
 
 
 class Person(models.Model):
-    cdalterdata = models.CharField('Cód. Alterdata', max_length=6)
+    #cdalterdata = models.CharField('Cód. Alterdata', max_length=6)
     name = models.CharField('Nome',max_length=100)
-    cpf_cnpj = models.CharField('CPF/CNPJ', max_length=18)
+    cpf_cnpj = models.CharField('CPF/CNPJ', max_length=18, unique=True)
 
     def __str__(self):
         return self.name

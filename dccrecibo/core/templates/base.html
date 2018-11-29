@@ -30,10 +30,10 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
         <a href="#!" class="brand-logo">Sistema de Pesquisas</a>
             <ul class="right hide-on-med-and-down">
-            <li>Pessoa</li>
-            <li>Cliente</li>
-            <li>Lista Clientes</li>
-            <li>Pergunta</li>
+            <li><a href="{% url 'core:person_create' %}">Cliente</a></li>
+            <li><a href="{% url 'core:person_list' %}">Lista Clientes</a></li>
+            <li><a href="{% url 'core:person_create' %}">Recibos</a></li>
+            <li><a href="{% url 'core:receipt_return' %}">Lista Recibos</a></li>
             </ul>
         </div>
     </nav>

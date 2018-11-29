@@ -9,11 +9,12 @@ from django.template.loader import get_template
 
 from django.views.generic import View
 
-from dccrecibo.core.models import Receipt, ReceiptMovimento
+from dccrecibo.core.forms import PersonForm
+from dccrecibo.core.models import Receipt, ReceiptMovimento, Person
 from dccrecibo.utils import render_to_pdf# created in step 4
 
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
 import weasyprint
 
@@ -73,3 +74,28 @@ def receipt_return(request):
     return render(request, 'lista_recibo.html', context)
 
 #DEFINIR NOVO RECIBO COMO
+
+
+def person_create(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+
+        if form.is_valid():
+            print('<<<<==== FORM VALIDO ====>>>>')
+            new = form.save(commit=False)
+            new.save()
+            #form.save_m2m()
+
+            return HttpResponseRedirect('/pessoa/listar')
+        else:
+            print('<<<<==== AVISO DE FORMULARIO INVALIDO ====>>>>')
+            print(form)
+            return render(request, 'person_create.html', {'form':form})
+    else:
+        context = {'form': PersonForm()}
+        return render(request, 'person_create.html', context)
+
+
+def person_list(request):
+    persons = Person.objects.all().order_by("name")
+    return render(request, 'person_list.html', {'persons': persons})
