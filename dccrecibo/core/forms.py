@@ -29,4 +29,4 @@ class ReceiptForm(forms.models.ModelForm):
                     )
 
 ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento, can_delete=True,
-        fields=('form_of_payment', 'kind', 'form_of_payment'), extra=1)
+        fields=('form_of_payment', 'kind', 'value_moved'), extra=5)

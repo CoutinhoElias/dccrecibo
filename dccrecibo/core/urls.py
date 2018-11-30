@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from django.views.i18n import JavaScriptCatalog
 
 from dccrecibo.core import views
-from .views import GeneratePDF, admin_receipt_pdf, receipt_return
+from .views import GeneratePDF, admin_receipt_pdf, receipt_return, receipt_update
 
 app_name = 'core'
 
@@ -12,6 +12,9 @@ app_name = 'core'
 urlpatterns = [
     path('<int:id>/',  GeneratePDF.as_view(), name='generatepdf'),
     path('<int:id>/pdf/', views.admin_receipt_pdf, name='admin_receipt_pdf'),
+
+    path('recibo/novo/', views.receipt_create, name='receipt_create'),
+    path('edido/editar/<int:id>/', views.receipt_update, name='receipt_update'),
 
     path('lista/', views.receipt_return, name='receipt_return'),
 

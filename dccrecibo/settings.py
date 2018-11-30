@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'material',
     'dccrecibo.core',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

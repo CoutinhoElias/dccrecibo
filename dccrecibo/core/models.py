@@ -30,7 +30,7 @@ class Receipt(models.Model):
     color = models.CharField('Cor', max_length=100)
     created = models.DateTimeField('created', auto_now_add=True)
     modified = models.DateTimeField('modified', auto_now=True)
-    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE,)
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     observation = models.CharField('Observações', max_length=200)
 
 

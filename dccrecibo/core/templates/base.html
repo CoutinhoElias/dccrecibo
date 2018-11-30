@@ -25,14 +25,14 @@
 
 <body>
     <!--NAVBAR-->
-    <nav class="blue darken-2">
+    <nav class="indigo darken-4">
         <div class="nav-wrapper">
         <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
         <a href="#!" class="brand-logo">DCC Automotive</a>
             <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'core:person_create' %}">Cliente</a></li>
             <li><a href="{% url 'core:person_list' %}">Lista Clientes</a></li>
-            <li><a href="{% url 'core:person_create' %}">Recibos</a></li>
+            <li><a href="{% url 'core:receipt_create' %}">Recibos</a></li>
             <li><a href="{% url 'core:receipt_return' %}">Lista Recibos</a></li>
             </ul>
         </div>
@@ -54,6 +54,7 @@
 
         <li><a href="{% url 'core:person_create' %}"><i class="material-icons">person</i>Cliente</a></li>
         <li><a href="{% url 'core:person_list' %}"><i class="material-icons">question_answer</i>Lista Clientes</a></li>
+        <li><a href="{% url 'core:receipt_create' %}"><i class="material-icons">question_answer</i>Novo Recibo</a></li>
         <li><a href="{% url 'core:receipt_return' %}"><i class="material-icons">question_answer</i>Lista Recibos</a></li>
         <li><a href="#!">Second Link</a></li>
         <li><div class="divider"></div></li>
@@ -118,6 +119,8 @@
                 });
             });
         </script>
+
+
     {% endblock %}
 
 </body>

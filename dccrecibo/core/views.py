@@ -104,7 +104,7 @@ def person_list(request):
 
 #----------------------------------------------------------------------------------------------------------------------
 
-def invoices_create(request):
+def receipt_create(request):
     success_message = 'The receipt was edited correctly.'
     if request.method == 'POST':
         form = ReceiptForm(request.POST)
@@ -112,18 +112,18 @@ def invoices_create(request):
 
         if form.is_valid() and formset.is_valid():
             with transaction.atomic():
-                invoice = form.save()
-                formset.instance = invoice
+                receipt = form.save()
+                formset.instance = receipt
                 formset.save()
 
-            return redirect('/lancamento/pedido/listar/')
+            return redirect('/lista/')
     else:
-        form = ReceiptForm()
+        form = ReceiptForm(initial={'author': request.user})
         formset = ReceiptMovimentoFormSet()
 
     forms = [formset.empty_form] + formset.forms
     context = {'form': form, 'formset': formset, 'forms': forms}
-    return render(request, 'checkout/invoice_form.html', context)
+    return render(request, 'receipt_form.html', context)
 
 
 def receipt_update(request, pk):
