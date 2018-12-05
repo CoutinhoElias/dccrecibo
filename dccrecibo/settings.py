@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'material',
     'dccrecibo.core',
+    'dccrecibo.accounts',
     'widget_tweaks',
 ]
 
@@ -124,3 +125,9 @@ USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+#Auth
+LOGIN_URL = 'accounts:login'
+LOGOUT_URL = 'accounts:logout'
+LOGIN_REDIRECT_URL = 'home'

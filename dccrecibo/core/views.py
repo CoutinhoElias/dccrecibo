@@ -116,7 +116,10 @@ def receipt_create(request):
                 formset.instance = receipt
                 formset.save()
 
-            return redirect('/lista/')
+            if 'btn_submit_1' in request.POST:
+                return redirect('/lista/')
+            else:
+                return redirect('/recibo/novo/')
     else:
         form = ReceiptForm(initial={'author': request.user})
         formset = ReceiptMovimentoFormSet()
@@ -157,3 +160,4 @@ def receipt_update(request, pk):
     return render(request, 'checkout/invoice_form.html', context)
 
 #----------------------------------------------------------------------------------------------------------------------
+

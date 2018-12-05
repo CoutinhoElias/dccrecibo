@@ -6,5 +6,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('', TemplateView.as_view(template_name='base.html'), name='home'),
     path('', include('dccrecibo.core.urls')),
+
+    path('', include('dccrecibo.accounts.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -22,11 +22,13 @@ class ReceiptForm(forms.models.ModelForm):
         fields = '__all__'
 
     layout = Layout(
+        Fieldset("A impressão desta tela não tem valor de recibo.",
                      Row('person','vehicle'),
                      Row('chassis', 'color'),
                      Row('author'),
                      Row('observation'),
                     )
+        )
 
 ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento, can_delete=True,
         fields=('form_of_payment', 'kind', 'value_moved'), extra=5)
