@@ -34,6 +34,7 @@
             <li><a href="{% url 'core:person_list' %}">Lista Clientes</a></li>
             <li><a href="{% url 'core:receipt_create' %}">Recibos</a></li>
             <li><a href="{% url 'core:receipt_return' %}">Lista Recibos</a></li>
+            <li><a href="{% url 'accounts:register' %}">Cadastre-se</a></li>
             {% if user.is_authenticated %}
                 <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
             {% else %}

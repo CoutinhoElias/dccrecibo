@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -117,7 +118,7 @@ def receipt_create(request):
                 formset.save()
 
             if 'btn_submit_1' in request.POST:
-                return redirect('/lista/')
+                return redirect('/logout/')
             else:
                 return redirect('/recibo/novo/')
     else:
@@ -161,3 +162,10 @@ def receipt_update(request, pk):
 
 #----------------------------------------------------------------------------------------------------------------------
 
+
+def register(request):
+    template_name: 'accounts/register.html'
+    context = {
+        'form': UserCreationForm()
+    }
+    return render(request, template_name)
