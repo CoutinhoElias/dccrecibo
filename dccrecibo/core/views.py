@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.shortcuts import render, get_object_or_404, redirect
@@ -104,7 +105,7 @@ def person_list(request):
 
 
 #----------------------------------------------------------------------------------------------------------------------
-
+@login_required
 def receipt_create(request):
     success_message = 'The receipt was edited correctly.'
     if request.method == 'POST':

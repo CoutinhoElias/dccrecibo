@@ -7,23 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from dccrecibo.accounts.forms import RegistrationForm
 
 
-def register2(request):
-    template_name = 'accounts/register.html'
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        print(form)
-        if form.is_valid():
-            form.save()
-            return redirect(settings.LOGIN_URL)
-        else:
-            form = UserCreationForm()
-
-    context = {
-        'form':UserCreationForm()
-    }
-    return render(request, template_name, context)
-
-
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)

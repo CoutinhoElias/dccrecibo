@@ -19,6 +19,7 @@ class ReceiptForm(forms.models.ModelForm):
 
     class Meta:
         model = Receipt
+        #exclude = ['author']
         fields = '__all__'
 
     layout = Layout(
