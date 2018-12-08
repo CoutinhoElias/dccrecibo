@@ -19,6 +19,7 @@ urlpatterns = [
     path('lista/', views.receipt_return, name='receipt_return'),
 
     path('pessoa/novo/', views.person_create, name='person_create'),
+    path('pessoa/popular/', views.populate, name='populate'),
     path('pessoa/listar/', views.person_list, name='person_list'),
 
     url(r'^jsi18n/$', JavaScriptCatalog.as_view(), name='javascript-catalog'),
