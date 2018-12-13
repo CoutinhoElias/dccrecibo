@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'material',
+    'django_select2',
     'dccrecibo.core',
     'dccrecibo.accounts',
     'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

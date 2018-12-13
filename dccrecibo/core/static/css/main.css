@@ -6,3 +6,16 @@ body {
     border-radius: 15px;
     //margin-top:6em
 }
+
+
+//select2-selection__arrow{
+    //width:100%!important;
+    //precisa atualizar o css
+    //é possivel alterar no código do formulario para deixar com um width:100%? ele ta pegando aquele valor atual de algum
+    //lugar, precisa tirar aquilo e colocar 100%
+//}
+
+
+.select2-selection select2-selection--single{
+    width:100%!important;
+}

@@ -3,11 +3,11 @@
 {% load widget_tweaks %}
 {% load material_form %}
 {% load i18n %}
-
 {% block container %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <div class="card larger" id="card-radius">
-    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
             <div class="card-content">
                 {% form %}
 
@@ -58,3 +58,4 @@
 
         <script src="{% static 'js/jquery.formset.min.js' %}"></script>
         <script src="{% static 'js/invoice_form.js' %}"></script>
+

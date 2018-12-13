@@ -1,3 +1,4 @@
+from dal_select2.views import Select2QuerySetView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
@@ -109,6 +110,22 @@ def person_list(request):
     context = {'persons': persons}
     return render(request, 'person_list.html', context)
 
+
+class PersonAutoComplete(Select2QuerySetView):
+
+    def get_queryset(self):
+        # Don't forget to filter out results depending on the visitor !
+        if not self.request.user.is_authenticated():
+            return Person.objects.none()
+
+        qs = Person.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__icontains==self.q)
+
+        return qs
+            
+person_autocomplete = PersonAutoComplete.as_view()
 
 #----------------------------------------------------------------------------------------------------------------------
 @login_required

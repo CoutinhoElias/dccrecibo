@@ -1,4 +1,7 @@
+from dal import autocomplete
 from django import forms
+from django.contrib.auth.models import User
+
 from django.forms import inlineformset_factory
 from material import *
 
@@ -15,12 +18,32 @@ class PersonForm(forms.ModelForm):
         )
 
 
-class ReceiptForm(forms.models.ModelForm):
+class ReceiptForm(forms.ModelForm):
+    #last_search = forms.DateField(label='Última pesquisa', widget=forms.TextInput(attrs={'class': 'datepicker'}))
+    #person = forms.ModelChoiceField(queryset=Person.objects.all(), widget=forms.TextInput(attrs={'class': 'hide'}))
+
+    # person = forms.ModelChoiceField(
+    #     queryset=Person.objects.all(),
+    #     widget=autocomplete.ModelSelect2(url='core:person_autocomplete')
+    # )
+
+    person = forms.ModelChoiceField(
+        queryset=Person.objects.all()
+    )
+
+    author = forms.ModelChoiceField(
+        queryset=User.objects.all()
+    )
+
 
     class Meta:
         model = Receipt
         #exclude = ['author']
         fields = '__all__'
+
+        # widgets = {
+        #     'person': autocomplete.ModelSelect2(attrs={'class': 'select'}, url='core:person_autocomplete')
+        # }
 
     layout = Layout(
         Fieldset("A impressão desta tela não tem valor de recibo.",
@@ -30,6 +53,7 @@ class ReceiptForm(forms.models.ModelForm):
                      Row('observation'),
                     )
         )
+
 
 ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento, can_delete=True,
         fields=('form_of_payment', 'kind', 'value_moved'), extra=5)

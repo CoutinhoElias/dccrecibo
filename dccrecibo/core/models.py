@@ -73,7 +73,6 @@ TRANSACTION_KIND = (
 class ReceiptMovimento(models.Model):
     receipt = models.ForeignKey('core.Receipt', related_name='recibo_item', on_delete=models.CASCADE, verbose_name='Recibo')
     kind = models.CharField('Tipo Movimento', max_length=30, choices=TRANSACTION_KIND)
-    #description = models.CharField('Nome',max_length=100)
     form_of_payment = models.CharField('Forma de pagamento', max_length=30, choices=TRANSACTION_PAYMENT)
     value_moved = models.DecimalField('Valor Movimento', max_digits=10, decimal_places=2)
 
