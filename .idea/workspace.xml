@@ -69,7 +69,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dccrecibo/core/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
+            <state relative-caret-position="218">
               <caret line="42" column="21" lean-forward="true" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding>
                 <element signature="e#1#25#0" expanded="true" />
@@ -124,6 +124,8 @@
       <find>django_select2</find>
       <find>select2</find>
       <find>django</find>
+      <find>rest</find>
+      <find>gun</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -376,8 +378,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="25" width="1317" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49860725" visible="true" weight="0.23196276" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49860725" visible="true" weight="0.3227308" />
       <window_info id="Structure" order="1" sideWeight="0.5013928" side_tool="true" weight="0.23196276" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -391,7 +394,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5011637" side_tool="true" weight="0.32828283" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.5117845" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.5117845" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32996634" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32952693" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -822,14 +825,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        <state relative-caret-position="441">
+          <caret line="50" column="3" selection-start-line="50" selection-end-line="50" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dccrecibo/core/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
+        <state relative-caret-position="218">
           <caret line="42" column="21" lean-forward="true" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding>
             <element signature="e#1#25#0" expanded="true" />
