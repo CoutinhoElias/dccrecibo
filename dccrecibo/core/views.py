@@ -110,21 +110,21 @@ def person_list(request):
     return render(request, 'person_list.html', context)
 
 
-class PersonAutoComplete(Select2QuerySetView):
-
-    def get_queryset(self):
-        # Don't forget to filter out results depending on the visitor !
-        if not self.request.user.is_authenticated():
-            return Person.objects.none()
-
-        qs = Person.objects.all()
-
-        if self.q:
-            qs = qs.filter(name__icontains==self.q)
-
-        return qs
-            
-person_autocomplete = PersonAutoComplete.as_view()
+# class PersonAutoComplete(Select2QuerySetView):
+#
+#     def get_queryset(self):
+#         # Don't forget to filter out results depending on the visitor !
+#         if not self.request.user.is_authenticated():
+#             return Person.objects.none()
+#
+#         qs = Person.objects.all()
+#
+#         if self.q:
+#             qs = qs.filter(name__icontains==self.q)
+#
+#         return qs
+#
+# person_autocomplete = PersonAutoComplete.as_view()
 
 #----------------------------------------------------------------------------------------------------------------------
 @login_required
