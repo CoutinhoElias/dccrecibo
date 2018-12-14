@@ -1,8 +1,9 @@
-from dal import autocomplete
+
 from django import forms
 from django.contrib.auth.models import User
 
-from django.forms import inlineformset_factory
+from django.forms import inlineformset_factory, ModelMultipleChoiceField
+from django_select2.forms import Select2MultipleWidget
 from material import *
 
 from dccrecibo.core.models import Person, Receipt, ReceiptMovimento
@@ -27,9 +28,7 @@ class ReceiptForm(forms.ModelForm):
     #     widget=autocomplete.ModelSelect2(url='core:person_autocomplete')
     # )
 
-    person = forms.ModelChoiceField(
-        queryset=Person.objects.all()
-    )
+    person = ModelMultipleChoiceField (queryset=Person.objects.all()[:5], widget=Select2MultipleWidget)
 
     author = forms.ModelChoiceField(
         queryset=User.objects.all()
