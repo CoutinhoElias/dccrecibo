@@ -1,4 +1,3 @@
-from dal_select2.views import Select2QuerySetView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
