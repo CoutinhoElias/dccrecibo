@@ -33,7 +33,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_select2',
+    'dal',
+    'dal_select2',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,6 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dccrecibo.urls'
+
+#SELECT2_CSS = 'assets/css/select2.css'
 
 TEMPLATES = [
     {

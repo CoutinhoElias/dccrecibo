@@ -2,8 +2,8 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from django.forms import inlineformset_factory, ModelMultipleChoiceField
-from django_select2.forms import Select2MultipleWidget
+from django.forms import inlineformset_factory
+
 from material import *
 
 from dccrecibo.core.models import Person, Receipt, ReceiptMovimento
@@ -20,33 +20,28 @@ class PersonForm(forms.ModelForm):
 
 
 class ReceiptForm(forms.ModelForm):
-    #last_search = forms.DateField(label='Última pesquisa', widget=forms.TextInput(attrs={'class': 'datepicker'}))
-    #person = forms.ModelChoiceField(queryset=Person.objects.all(), widget=forms.TextInput(attrs={'class': 'hide'}))
-
     # person = forms.ModelChoiceField(
     #     queryset=Person.objects.all(),
     #     widget=autocomplete.ModelSelect2(url='core:person_autocomplete')
     # )
 
-    person = ModelMultipleChoiceField (queryset=Person.objects.all()[:5], widget=Select2MultipleWidget)
+    # person = ModelMultipleChoiceField(queryset=Person.objects.all()[:15], widget=HeavySelect2Widget(
+    #     data_url='http://127.0.0.1:8000/pessoa/'
+    # ))
+
+    # person = ModelMultipleChoiceField(queryset=Person.objects.all()[:15], widget=Select2Widget)
 
     author = forms.ModelChoiceField(
         queryset=User.objects.all()
     )
 
-
     class Meta:
         model = Receipt
-        #exclude = ['author']
         fields = '__all__'
-
-        # widgets = {
-        #     'person': autocomplete.ModelSelect2(attrs={'class': 'select'}, url='core:person_autocomplete')
-        # }
 
     layout = Layout(
         Fieldset("A impressão desta tela não tem valor de recibo.",
-                     Row('person','vehicle'),
+                     Row('person', 'vehicle'),
                      Row('chassis', 'color'),
                      Row('author'),
                      Row('observation'),
@@ -54,5 +49,6 @@ class ReceiptForm(forms.ModelForm):
         )
 
 
-ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento, can_delete=True,
-        fields=('form_of_payment', 'kind', 'value_moved'), extra=5)
+ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
+                                                can_delete=True, fields=('form_of_payment', 'kind', 'value_moved'),
+                                                extra=5)
