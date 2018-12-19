@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
+
 from django.shortcuts import render, get_object_or_404, redirect
-from dal import autocomplete
 
-
+from django.http import JsonResponse
+from django.db.models import Q
 
 # Create your views here.
 from django.template.loader import get_template
@@ -14,6 +15,7 @@ from django.template.loader import get_template
 #from dccrecibo.person.models import Person, Movimento
 
 from django.views.generic import View
+
 
 import create_data
 from dccrecibo.core.forms import PersonForm, ReceiptForm, ReceiptMovimentoFormSet
@@ -25,8 +27,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
 import weasyprint
 
+
 def home(request):
     return render(request, 'index.html')
+
 
 def admin_receipt_pdf(request, id=id):
     recibo = Receipt.objects.get(id=id)
@@ -113,18 +117,23 @@ def person_list(request):
     return render(request, 'person_list.html', context)
 
 
-class PersonAutocomplete(autocomplete.Select2QuerySetView):
-    def get_queryset(self):
-        # Don't forget to filter out results depending on the visitor !
-        if not self.request.user.is_authenticated():
-            return Person.objects.none()
+def person_autocomplete(request):
+    person_list = []
+    parm = request.GET.get('term')
+    persons = Person.objects.filter(
+        Q(usernam__icontains=parm) |
+        Q(email__icontains=parm) |
+        Q(first_name__icontains=parm) |
+        Q(last_name__icontains=parm)
+    )[:10]
+    for person in persons:
+        data = {}
+        data['id'] = person.pk
+        data['label'] = person.get_full_name()
+        data['value'] = person.get_full_name()
+        person_list.append(data)
 
-        qs = Person.objects.all()
-
-        if self.q:
-            qs = qs.filter(name__istartswith=self.q)
-
-        return qs
+    return JsonResponse(person_list, safe=False)
 
 #----------------------------------------------------------------------------------------------------------------------
 @login_required

@@ -14,8 +14,6 @@ urlpatterns = [
     path('', include('dccrecibo.core.urls')),
     path('', include(router.urls)),
 
-    # path('select2/', include('django_select2.urls')),
-
     path('', include('dccrecibo.accounts.urls')),
     path('admin/', admin.site.urls),
 ]

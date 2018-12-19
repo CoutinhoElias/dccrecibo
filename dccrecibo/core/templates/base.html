@@ -13,8 +13,7 @@
         {% include 'material/includes/material_css.html' %}
         <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
         <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" href= '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css'>
-        <!--{{ form.media.css }}-->
+       {{ form.media.css }}
 
     {% endblock %}
 
@@ -134,6 +133,15 @@
 
             });
         </script>
+
+
+        <script>
+        $(function() {
+            $('.autocomplete').autocomplete({
+               minLength: 3,
+               source: '{% url 'core:person_autocomplete' %}'
+           })
+        })
         <script src="{% static 'js/cep.js' %}"></script>
 
     {% endblock %}
