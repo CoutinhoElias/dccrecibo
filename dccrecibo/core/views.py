@@ -121,16 +121,16 @@ def person_autocomplete(request):
     person_list = []
     parm = request.GET.get('term')
     persons = Person.objects.filter(
-        Q(usernam__icontains=parm) |
-        Q(email__icontains=parm) |
-        Q(first_name__icontains=parm) |
-        Q(last_name__icontains=parm)
+        Q(name__icontains=parm) |
+        Q(cpf_cnpj__icontains=parm)
     )[:10]
+
     for person in persons:
         data = {}
         data['id'] = person.pk
-        data['label'] = person.get_full_name()
-        data['value'] = person.get_full_name()
+        data['label'] = person.get_name()
+        data['value'] = person.get_name()
+        print(person_list.append(data))
         person_list.append(data)
 
     return JsonResponse(person_list, safe=False)
