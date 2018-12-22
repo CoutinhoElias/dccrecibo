@@ -26,9 +26,14 @@ class ReceiptForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class': 'form-control autocomplete'})
     )
 
+    hidden_person = forms.CharField(
+        widget=forms.HiddenInput(), required=False
+    )
+
     class Meta:
         model = Receipt
-        fields = '__all__'
+        fields = 'hidden_person', 'person','vehicle', 'chassis', 'color', 'author', 'observation'
+        #fields = 'hidden_person', 'person','vehicle', 'chassis', 'color', 'author', 'observation'
 
         # widgets = {
         #     'person': forms.TextInput
@@ -40,7 +45,7 @@ class ReceiptForm(forms.ModelForm):
                      Row('chassis', 'color'),
                      Row('author'),
                      Row('observation'),
-                    )
+                 )
         )
 
 

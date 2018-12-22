@@ -141,12 +141,19 @@
         </script>
 
         <script>
-        $(function() {
-            $('.autocomplete').autocomplete({
-               minLength: 3,
-               source: '{% url 'core:person_autocomplete' %}'
-           })
-        })
+           $(function() {
+                $('.autocomplete').autocomplete({
+                    minLength: 3,
+                    source: '{% url 'core:person_autocomplete' %}',
+
+                    select: function(event, ui) {
+                        $('#id_hidden_person').val(ui.item.values.id);
+                        return false;
+                    }
+               })
+            })
+        </script>
+
         <script src="{% static 'js/cep.js' %}"></script>
 
     {% endblock %}

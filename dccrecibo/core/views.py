@@ -118,18 +118,19 @@ def person_list(request):
 
 
 def person_autocomplete(request):
+
     person_list = []
     parm = request.GET.get('term')
     persons = Person.objects.filter(
         Q(name__icontains=parm) |
-        Q(cpf_cnpj__icontains=parm)
+        Q(cpf_cnpj__iexact=parm)
     )[:10]
 
     for person in persons:
         data = {}
         data['id'] = person.pk
-        data['label'] = person.get_name()
-        data['value'] = person.get_name()
+        #data['label'] = person.name
+        data['value'] = person.name
         print(person_list.append(data))
         person_list.append(data)
 
@@ -143,9 +144,18 @@ def receipt_create(request):
         form = ReceiptForm(request.POST)
         formset = ReceiptMovimentoFormSet(request.POST)
 
+        form.errors.pop('person')
+        #form.errors.pop('hidden_person')
+
         if form.is_valid() and formset.is_valid():
             with transaction.atomic():
-                receipt = form.save()
+
+                receipt = form.save(commit=False)
+
+                person = Person.objects.get(pk=form.hidden_person)
+                receipt.person = person
+                receipt.save()
+
                 formset.instance = receipt
                 formset.save()
 
