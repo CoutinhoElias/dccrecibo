@@ -12,8 +12,6 @@
 
         {% include 'material/includes/material_css.html' %}
         <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
-       {{ form.media.css }}
 
     {% endblock %}
 
@@ -82,23 +80,11 @@
     </div> <!-- /container -->
 
     {% block js %}
-        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 
-
-
-
-    <!-- Compiled and minified JQuery -->
-        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>-->
-        <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>-->
-
-        <!-- Compiled and minified JavaScript -->
         {% include 'material/includes/material_js.html' %}
-        {{ form.media.js }}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
-
-        <script>
+        <script>z
             $(document).ready(function(){
                 //MATERIALIZE
                 $('.sidenav').sidenav();
@@ -134,30 +120,13 @@
             });
         </script>
 
-        <script
-          src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
-          integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
-          crossorigin="anonymous">
-        </script>
-
-        <script>
-           $(function() {
-                $('.autocomplete').autocomplete({
-                    minLength: 3,
-                    source: '{% url 'core:person_autocomplete' %}',
-
-                    select: function(event, ui) {
-                        $('#id_hidden_person').val(ui.item.values.id);
-                        return false;
-                    }
-               })
-            })
-        </script>
 
         <script src="{% static 'js/cep.js' %}"></script>
 
     {% endblock %}
 
 </body>
+    {{ form.media }}
+
 
 </html>

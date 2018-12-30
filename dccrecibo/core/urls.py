@@ -1,11 +1,10 @@
 from django.conf.urls import url, include
 from django.urls import path
-from django.views.generic import TemplateView
+
 from django.views.i18n import JavaScriptCatalog
 
 from dccrecibo.core import views
-from .views import GeneratePDF, person_autocomplete
-
+from .views import GeneratePDF
 app_name = 'core'
 
 
@@ -19,13 +18,8 @@ urlpatterns = [
     path('lista/', views.receipt_return, name='receipt_return'),
 
     path('pessoa/novo/', views.person_create, name='person_create'),
-    path('person_autocomplete', person_autocomplete, name='person_autocomplete'),
 
-    # url(
-    #     r'^person-autocomplete/$',
-    #     PersonAutocomplete.as_view(),
-    #     name='person-autocomplete',
-    # ),
+    path('person-autocomplete/', views.PersonAutocomplete.as_view(), name='person-autocomplete'),
 
     path('pessoa/popular/', views.populate, name='populate'),
     path('pessoa/listar/', views.person_list, name='person_list'),

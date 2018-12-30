@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'dccrecibo.accounts',
     'widget_tweaks',
     'rest_framework',
+
+    'dal',
+    'dal_select2',
 ]
 
 MIDDLEWARE = [

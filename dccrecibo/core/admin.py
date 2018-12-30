@@ -9,6 +9,7 @@ class ReceiptMovimentoInline(admin.TabularInline):
     model = ReceiptMovimento
     extra = 1
 
+
 class ReceiptModelAdmin(admin.ModelAdmin):
     readonly_fields = ['value_total']
     inlines = [ReceiptMovimentoInline]
@@ -26,5 +27,10 @@ class ReceiptModelAdmin(admin.ModelAdmin):
         obj.save()
 
 
-admin.site.register(Person)
+class PersonModelAdmin(admin.ModelAdmin):
+    pass
+    list_display = ('pk', 'name', 'cpf_cnpj')
+
+
+admin.site.register(Person, PersonModelAdmin)
 admin.site.register(Receipt, ReceiptModelAdmin)

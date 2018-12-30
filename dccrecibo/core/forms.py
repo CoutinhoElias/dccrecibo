@@ -1,6 +1,6 @@
-
+from dal import autocomplete
 from django import forms
-from django.db.models import TextField
+from django.contrib.auth.models import User
 
 from django.forms import inlineformset_factory
 
@@ -20,24 +20,17 @@ class PersonForm(forms.ModelForm):
 
 
 class ReceiptForm(forms.ModelForm):
-
-    person = forms.ModelChoiceField(
-        queryset=Person.objects.none(),
-        widget=forms.TextInput(attrs={'class': 'form-control autocomplete'})
-    )
-
-    hidden_person = forms.CharField(
-        widget=forms.HiddenInput(), required=False
-    )
+    person = forms.ModelChoiceField(queryset=Person.objects.all(),
+                                    widget=autocomplete.ModelSelect2(url='core:person-autocomplete',
+                                                                     attrs={'style': 'width: 100%;'})
+                                    )
+    author = forms.ModelChoiceField(queryset=User.objects.all(),
+                                    widget=autocomplete.ModelSelect2(attrs={'style': 'width: 100%;'})
+                                    )
 
     class Meta:
         model = Receipt
-        fields = 'hidden_person', 'person','vehicle', 'chassis', 'color', 'author', 'observation'
-        #fields = 'hidden_person', 'person','vehicle', 'chassis', 'color', 'author', 'observation'
-
-        # widgets = {
-        #     'person': forms.TextInput
-        # }
+        exclude = ()
 
     layout = Layout(
         Fieldset("A impressão desta tela não tem valor de recibo.",
@@ -50,5 +43,14 @@ class ReceiptForm(forms.ModelForm):
 
 
 ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
-                                                can_delete=True, fields=('form_of_payment', 'kind', 'value_moved'),
+                                                widgets={'form_of_payment': autocomplete.ModelSelect2(
+                                                    attrs={'style': 'width: auto;'}),
+                                                         'kind': autocomplete.ModelSelect2(
+                                                             attrs={'style': 'width: auto;'})
+                                                         },
+                                                can_delete=True,
+                                                fields=('form_of_payment',
+                                                        'kind',
+                                                        'value_moved'),
                                                 extra=5)
+

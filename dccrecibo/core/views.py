@@ -1,3 +1,5 @@
+from dal import autocomplete
+from dal_select2.views import Select2QuerySetView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
@@ -129,12 +131,25 @@ def person_autocomplete(request):
     for person in persons:
         data = {}
         data['id'] = person.pk
-        #data['label'] = person.name
+        data['label'] = person.name
         data['value'] = person.name
         print(person_list.append(data))
         person_list.append(data)
 
     return JsonResponse(person_list, safe=False)
+
+
+class PersonAutocomplete(autocomplete.Select2QuerySetView):
+
+    def get_queryset(self):
+        # Don't forget to filter out results depending on the visitor !
+
+        qs = Person.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs
+
 
 #----------------------------------------------------------------------------------------------------------------------
 @login_required
@@ -144,18 +159,13 @@ def receipt_create(request):
         form = ReceiptForm(request.POST)
         formset = ReceiptMovimentoFormSet(request.POST)
 
-        form.errors.pop('person')
+        #form.errors.pop('person')
         #form.errors.pop('hidden_person')
 
         if form.is_valid() and formset.is_valid():
             with transaction.atomic():
 
-                receipt = form.save(commit=False)
-
-                person = Person.objects.get(pk=form.hidden_person)
-                receipt.person = person
-                receipt.save()
-
+                receipt = form.save()
                 formset.instance = receipt
                 formset.save()
 
