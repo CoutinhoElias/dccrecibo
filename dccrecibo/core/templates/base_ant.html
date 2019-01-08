@@ -9,16 +9,16 @@
     {% block css %}
         <!-- Compiled and minified CSS -->
         <!--O PROBLEMA TODO É O CSS MATERIAL ABAIXO QUENÃO FUNCIONA COM JQUERY-->
+
         {% include 'material/includes/material_css.html' %}
         <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
 
     {% endblock %}
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>PESQUISA</title>
+    <title>RECIBO</title>
 
 
 </head>
@@ -76,14 +76,13 @@
         {% endblock container %}
 
 
+
     </div> <!-- /container -->
 
     {% block js %}
 
-        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-        <script src="{% static 'js/jquery.mtz.monthpicker.js' %}"></script>
         {% include 'material/includes/material_js.html' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script>
             $(document).ready(function(){
@@ -112,17 +111,22 @@
 
 
 
-                $('.monthpicker').monthpicker({
-                    pattern: 'mm/yyyy',
-                    monthNames: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                });
+                <!--$('.monthpicker').monthpicker({-->
+                    <!--pattern: 'mm/yyyy',-->
+                    <!--monthNames: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],-->
+                <!--});-->
 
-                //USADO PARA OCULTAR OS CAMPOS SELECTS DEIXANDO SOMENTE DJANGO-SELECT
-                $('.select-wrapper').hide();
+
             });
         </script>
+
+
+        <script src="{% static 'js/cep.js' %}"></script>
+
     {% endblock %}
 
 </body>
- {{ form.media }}
+    {{ form.media }}
+
+
 </html>
