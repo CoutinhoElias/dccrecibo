@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 
-class UserProfile(User):
+class UserAdress(User):
     nomecompleto = models.CharField('Nome Completo', max_length=100, null=False, blank=False)
     cep = models.CharField('Cep', max_length=10, null=True, blank=False)
     logradouro = models.CharField('Logradouro', max_length=100)

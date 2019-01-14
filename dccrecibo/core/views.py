@@ -13,16 +13,13 @@ from django.db.models import Q
 from django.template.loader import get_template
 
 
-#from dccrecibo.person.forms import PersonForm, MovimentoForm
-#from dccrecibo.person.models import Person, Movimento
-
 from django.views.generic import View
 
 
 import create_data
 from dccrecibo.core.forms import PersonForm, ReceiptForm, ReceiptMovimentoFormSet
 from dccrecibo.core.models import Receipt, ReceiptMovimento, Person
-from dccrecibo.utils import render_to_pdf# created in step 4
+from dccrecibo.utils import render_to_pdf
 
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -35,8 +32,8 @@ def home(request):
 
 
 def admin_receipt_pdf(request, id=id):
-    recibo = Receipt.objects.get(id=id)
-    movements = ReceiptMovimento.objects.filter(receipt_id=id)
+    recibo = Receipt.objects.select_related('author__useradress', 'person').get(id=id)
+    movements = ReceiptMovimento.objects.select_related('receipt').filter(receipt_id=id)
 
     context = {
         'recibo': recibo,
@@ -45,7 +42,7 @@ def admin_receipt_pdf(request, id=id):
 
     html = render_to_string('recibo.html', context)
     response = HttpResponse(content_type='recibo/pdf')
-    response['Content-Disposition'] = 'filename="recibo_{}.pdf"'.format(recibo.id)       #CONSULTAR UNIVERSITÁRIOS
+    response['Content-Disposition'] = 'filename="recibo_{}.pdf"'.format(recibo.id)
     weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + '/css/pdf.css')])
     return response
 
@@ -78,11 +75,13 @@ class GeneratePDF(View):
 
 def receipt_return(request):
     q = request.GET.get('searchInput')
-    #print(request.GET)
+
     if q:
-        receipts = Receipt.objects.select_related('person').all().order_by('created').filter(person__name__icontains=q)
+        receipts = Receipt.objects.select_related('person')\
+            .all().order_by('created').filter(person__name__icontains=q)
     else:
-        receipts = Receipt.objects.select_related('person').all().order_by('created')
+        receipts = Receipt.objects.select_related('person')\
+            .all().order_by('created')
     context = {'receipts': receipts}
     return render(request, 'lista_recibo.html', context)
 
