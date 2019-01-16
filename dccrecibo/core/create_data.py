@@ -1,4 +1,4 @@
-[
+person_add = [
     {'cpf_cnpj': '00.000.320/6413-68', 'name': 'JOSE CELIO GURGEL DE CASTRO'},
     {'cpf_cnpj': '00.057.733/0001-62', 'name': 'MB GUIMARAES NETO CIA LTDA'},
     {'cpf_cnpj': '00.063.405/0001-79', 'name': 'Dafonte Veiculos LTDA'},

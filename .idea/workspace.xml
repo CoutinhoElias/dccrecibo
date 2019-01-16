@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="69216de2-1f98-4417-adff-10f58dcdb009" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dccrecibo/core/templates/recibo.html" beforeDir="false" afterPath="$PROJECT_DIR$/dccrecibo/core/templates/recibo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/dccrecibo/core/create_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dccrecibo/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dccrecibo/core/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/dccrecibo/core/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+              <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -52,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dccrecibo/core/templates/recibo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+            <state relative-caret-position="125">
+              <caret line="57" column="87" selection-start-line="57" selection-start-column="87" selection-end-line="57" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -61,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dccrecibo/core/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="45">
+              <caret line="224" selection-start-line="224" selection-end-line="224" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -91,7 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>person_create</find>
       <find>{% url 'person_create' %}</find>
       <find>data-formset-add</find>
       <find>ocean</find>
@@ -121,6 +121,7 @@
       <find>person_</find>
       <find>person-autocomplete</find>
       <find>errors</find>
+      <find>create_</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -136,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dccrecibo/core/templates/recibo2.html" />
         <option value="$PROJECT_DIR$/dccrecibo/core/templates/reciboOriginal.html" />
         <option value="$PROJECT_DIR$/dccrecibo/core/templates/css.css" />
         <option value="$PROJECT_DIR$/../Área de Trabalho/form/recibo.html" />
@@ -185,8 +185,9 @@
         <option value="$PROJECT_DIR$/dccrecibo/accounts/views.py" />
         <option value="$PROJECT_DIR$/dccrecibo/accounts/forms.py" />
         <option value="$PROJECT_DIR$/dccrecibo/core/models.py" />
-        <option value="$PROJECT_DIR$/dccrecibo/core/views.py" />
         <option value="$PROJECT_DIR$/dccrecibo/core/templates/recibo.html" />
+        <option value="$PROJECT_DIR$/dccrecibo/core/create_data.py" />
+        <option value="$PROJECT_DIR$/dccrecibo/core/views.py" />
       </list>
     </option>
   </component>
@@ -208,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,12 +221,6 @@
               <item name="dccrecibo" type="b2602c69:ProjectViewProjectNode" />
               <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
               <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dccrecibo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
-              <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
-              <item name="accounts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dccrecibo" type="b2602c69:ProjectViewProjectNode" />
@@ -269,7 +265,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,19 +277,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dccrecibo/core" />
+      <recent name="$PROJECT_DIR$/dccrecibo" />
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/templates/accounts" />
+      <recent name="$PROJECT_DIR$/dccrecibo/core/static/js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/dccrecibo/core/templates" />
       <recent name="$PROJECT_DIR$/dccrecibo/core/static/img" />
       <recent name="$PROJECT_DIR$/dccrecibo/core/static/js" />
       <recent name="$PROJECT_DIR$/staticfiles/css" />
       <recent name="$PROJECT_DIR$/dccrecibo/accounts/templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/dccrecibo" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/templates/accounts" />
-      <recent name="$PROJECT_DIR$/dccrecibo/core/static/js" />
-      <recent name="$PROJECT_DIR$/dccrecibo/core/static/css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -322,7 +317,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/create_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dccrecibo/core/create_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -416,7 +411,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="25" width="1317" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49860725" visible="true" weight="0.21411948" />
       <window_info id="Structure" order="1" sideWeight="0.5013928" side_tool="true" weight="0.23196276" />
@@ -490,33 +484,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
-          <line>228</line>
+          <line>230</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
-          <line>230</line>
+          <line>232</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
-          <line>231</line>
+          <line>233</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
-          <line>232</line>
+          <line>234</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
-          <line>234</line>
+          <line>236</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
-          <line>236</line>
+          <line>238</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dccrecibo/core/views.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -676,9 +675,6 @@
           <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/create_data.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/dccrecibo/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -842,27 +838,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dccrecibo/core/templates/recibo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="57" column="87" selection-start-line="57" selection-start-column="87" selection-end-line="57" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dccrecibo/core/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <caret line="23" column="39" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dccrecibo/core/templates/recibo.html">
+    <entry file="file://$PROJECT_DIR$/dccrecibo/core/create_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+        <state relative-caret-position="90">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dccrecibo/core/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="45">
+          <caret line="224" selection-start-line="224" selection-end-line="224" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

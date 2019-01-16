@@ -16,7 +16,7 @@ from django.template.loader import get_template
 from django.views.generic import View
 
 
-import create_data
+
 from dccrecibo.core.forms import PersonForm, ReceiptForm, ReceiptMovimentoFormSet
 from dccrecibo.core.models import Receipt, ReceiptMovimento, Person
 from dccrecibo.utils import render_to_pdf
@@ -224,11 +224,13 @@ def register(request):
 
 def populate(request):
 
-    person_add = create_data
+    from dccrecibo.core import create_data
+
+    print(create_data.person_add)
 
     lista = []
 
-    for person in person_add:
+    for person in create_data.person_add:
         obj = Person(**person)
         lista.append(obj)
 
