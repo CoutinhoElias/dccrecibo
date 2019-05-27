@@ -1,5 +1,5 @@
 from dal import autocomplete
-from dal_select2.views import Select2QuerySetView
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
@@ -15,9 +15,9 @@ from django.template.loader import get_template
 
 from django.views.generic import View
 
+from .filters import ReceiptFilter
 
-
-from dccrecibo.core.forms import PersonForm, ReceiptForm, ReceiptMovimentoFormSet
+from dccrecibo.core.forms import PersonForm, ReceiptForm, ReceiptMovimentoFormSet, ReceiptSearchForm
 from dccrecibo.core.models import Receipt, ReceiptMovimento, Person
 from dccrecibo.utils import render_to_pdf
 
@@ -43,7 +43,10 @@ def admin_receipt_pdf(request, id=id):
     html = render_to_string('recibo.html', context)
     response = HttpResponse(content_type='recibo/pdf')
     response['Content-Disposition'] = 'filename="recibo_{}.pdf"'.format(recibo.id)
-    weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + '/css/pdf.css')])
+    weasyprint.HTML(string=html,
+                    base_url=request.build_absolute_uri()).write_pdf(response,
+                                                                     stylesheets=[weasyprint.CSS(settings.STATIC_ROOT +
+                                                                                                 '/css/pdf.css')])
     return response
 
 
@@ -73,7 +76,7 @@ class GeneratePDF(View):
         return HttpResponse("Not found")
 
 
-def receipt_return(request):
+def receipt_return1(request):
     q = request.GET.get('searchInput')
 
     if q:
@@ -85,7 +88,44 @@ def receipt_return(request):
     context = {'receipts': receipts}
     return render(request, 'lista_recibo.html', context)
 
-#DEFINIR NOVO RECIBO COMO
+
+def receipt_return(request):
+    if request.method == 'POST':
+        form = ReceiptSearchForm(request.POST)
+
+        data = dict(
+            fvehicle=form.cleaned_data['vehicle'],
+        )
+
+        criar_filter(**data)
+
+        fvehicle = form.cleaned_data['vehicle']
+        receipts = Receipt.objects.select_related('person').filter(vehicle__icontains=fvehicle).order_by('created')
+
+
+        return HttpResponseRedirect('/lista/recibo')
+    else:
+        form = ReceiptSearchForm(request.GET)
+
+        data = dict(
+            fvehicle='vehicle'
+        )
+
+        criar_filter(**data)
+        receipts = Receipt.objects.select_related('person').all().order_by('created')
+        context = {'form': ReceiptSearchForm(), 'receipts': receipts}
+        return render(request, 'lista_recibo.html', context)
+
+
+def criar_filter(**data):
+        fvehicle=data['vehicle']
+        print(fvehicle)
+
+
+def search_receipt(request):
+    receipt_list = Receipt.objects.all()
+    receipt_filter = ReceiptFilter(request.GET, queryset=receipt_list)
+    return render(request, 'lista_recibo.html', {'filter': receipt_filter})
 
 
 def person_create(request):
@@ -158,8 +198,8 @@ def receipt_create(request):
         form = ReceiptForm(request.POST)
         formset = ReceiptMovimentoFormSet(request.POST)
 
-        #form.errors.pop('person')
-        #form.errors.pop('hidden_person')
+        # form.errors.pop('person')
+        # form.errors.pop('hidden_person')
 
         if form.is_valid() and formset.is_valid():
             with transaction.atomic():

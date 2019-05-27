@@ -13,9 +13,10 @@ urlpatterns = [
     path('<int:id>/pdf/', views.admin_receipt_pdf, name='admin_receipt_pdf'),
 
     path('recibo/novo/', views.receipt_create, name='receipt_create'),
-    path('edido/editar/<int:id>/', views.receipt_update, name='receipt_update'),
+    path('pedido/editar/<int:id>/', views.receipt_update, name='receipt_update'),
 
     path('lista/', views.receipt_return, name='receipt_return'),
+    path('lista/recibo/', views.receipt_return, name='receipt_return'),
 
     path('pessoa/novo/', views.person_create, name='person_create'),
 

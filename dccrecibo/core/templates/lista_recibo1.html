@@ -5,19 +5,9 @@
 
     <div class="card larger" id="card-radius">
 
-        <form method="GET" enctype="multipart/form-data">{% csrf_token %}
-
-            <div class="card-content">
-                {% form %}
-
-                {% endform %}
-            </div>
-
-            <div class="card-action">
-                <div class="right-align">
-                    <button class="waves-effect waves-light btn" type="submit">Pesquisar</button>
-                </div>
-            </div>
+        <form method="get">
+           {{ filter.form.as_p }}
+            <button type="submit">Search</button>
         </form>
 
 
@@ -33,7 +23,7 @@
 {#            <th>Forma Pagamento</th>#}
           </tr>
         </thead>
-            {% for receipt in receipts %}
+            {% for receipt in filter.qs %}
                 <tr>
                     <td>{{ receipt.person }}</td>
                     <td>{{ receipt.created|date:"d/m/Y" }}</td>

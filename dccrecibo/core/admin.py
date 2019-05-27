@@ -15,7 +15,8 @@ class ReceiptModelAdmin(admin.ModelAdmin):
     inlines = [ReceiptMovimentoInline]
     list_display = ['person', 'value_total', 'vehicle', 'chassis', 'color']
 
-    def value_total(self, obj):
+    @staticmethod
+    def value_total(obj):
         if not obj.value_total:
             return obj.value_total
         else:

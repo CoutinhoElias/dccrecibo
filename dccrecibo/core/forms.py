@@ -44,7 +44,8 @@ class ReceiptForm(forms.ModelForm):
 
 ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
                                                 widgets={'form_of_payment': autocomplete.ModelSelect2(
-                                                    attrs={'style': 'width: auto;'}),
+                                                             attrs={'style': 'width: auto;'}),
+
                                                          'kind': autocomplete.ModelSelect2(
                                                              attrs={'style': 'width: auto;'})
                                                          },
@@ -54,3 +55,24 @@ ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
                                                         'value_moved'),
                                                 extra=5)
 
+
+class ReceiptSearchForm(forms.ModelForm):
+    person = forms.ModelChoiceField(queryset=Person.objects.all(),
+                                    widget=autocomplete.ModelSelect2(url='core:person-autocomplete',
+                                                                     attrs={'style': 'width: 100%;'})
+                                    )
+    author = forms.ModelChoiceField(queryset=User.objects.all(),
+                                    widget=autocomplete.ModelSelect2(attrs={'style': 'width: 100%;'})
+                                    )
+
+    class Meta:
+        model = Receipt
+        exclude = ()
+
+    layout = Layout(
+        Fieldset("Efetue sua pesquisa.",
+                     Row('person', 'vehicle'),
+                     Row('chassis', 'color'),
+                     Row('author'),
+                 )
+        )

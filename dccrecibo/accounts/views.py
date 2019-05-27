@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 
 # Create your views here.
-from django.contrib.auth.forms import UserCreationForm
-
 from dccrecibo.accounts.forms import RegistrationForm
 
 
