@@ -67,6 +67,13 @@ class ReceiptSearchForm(forms.ModelForm):
 
     class Meta:
         model = Receipt
+        fields = (
+            'person',
+            'vehicle',
+            'chassis',
+            'color',
+            'author',
+        )
         exclude = ()
 
     layout = Layout(

@@ -91,35 +91,39 @@ def receipt_return1(request):
 
 def receipt_return(request):
     if request.method == 'POST':
+
         form = ReceiptSearchForm(request.POST)
 
-        data = dict(
-            fvehicle=form.cleaned_data['vehicle'],
-        )
+        if form.is_valid():
+            data = dict(
+                vehicle=form.cleaned_data['vehicle'],
+            )
 
-        criar_filter(**data)
+            criar_filter(**data)
 
-        fvehicle = form.cleaned_data['vehicle']
-        receipts = Receipt.objects.select_related('person').filter(vehicle__icontains=fvehicle).order_by('created')
+            # (vehicle) = criar_filter()
 
+            fvehicle = form.cleaned_data['vehicle']
+            receipts = Receipt.objects.select_related('person').filter(vehicle__icontains=fvehicle).order_by('created')
+
+            return HttpResponseRedirect('/lista/recibo/')
+        else:
+            print('<<<<==== AVISO DE FORMULARIO INVALIDO ====>>>>')
+            criar_filter()
+            return render(request, 'person_create.html', {'form': form})
 
         return HttpResponseRedirect('/lista/recibo')
     else:
-        form = ReceiptSearchForm(request.GET)
-
-        data = dict(
-            fvehicle='vehicle'
-        )
-
-        criar_filter(**data)
         receipts = Receipt.objects.select_related('person').all().order_by('created')
         context = {'form': ReceiptSearchForm(), 'receipts': receipts}
         return render(request, 'lista_recibo.html', context)
 
 
 def criar_filter(**data):
-        fvehicle=data['vehicle']
-        print(fvehicle)
+    vehicle=data['vehicle']
+    print(vehicle)
+
+    return vehicle
 
 
 def search_receipt(request):
