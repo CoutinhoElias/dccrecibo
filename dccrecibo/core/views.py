@@ -76,54 +76,51 @@ class GeneratePDF(View):
         return HttpResponse("Not found")
 
 
-def receipt_return1(request):
-    q = request.GET.get('searchInput')
-
-    if q:
-        receipts = Receipt.objects.select_related('person')\
-            .all().order_by('created').filter(person__name__icontains=q)
-    else:
-        receipts = Receipt.objects.select_related('person')\
-            .all().order_by('created')
-    context = {'receipts': receipts}
-    return render(request, 'lista_recibo.html', context)
+# def receipt_return1(request):
+#     q = request.GET.get('searchInput')
+#
+#     if q:
+#         receipts = Receipt.objects.select_related('person')\
+#             .all().order_by('created').filter(person__name__icontains=q)
+#     else:
+#         receipts = Receipt.objects.select_related('person')\
+#             .all().order_by('created')
+#     context = {'receipts': receipts}
+#     return render(request, 'lista_recibo.html', context)
 
 
 def receipt_return(request):
+
+
     if request.method == 'POST':
 
         form = ReceiptSearchForm(request.POST)
 
         if form.is_valid():
-            data = dict(
-                vehicle=form.cleaned_data['vehicle'],
-            )
+            # vehicle1=form.cleaned_data['vehicle'],
 
-            criar_filter(**data)
-
+            # criar_filter(vehicle)
+            # print(criar_filter(vehicle), 'POST')
             # (vehicle) = criar_filter()
 
-            fvehicle = form.cleaned_data['vehicle']
-            receipts = Receipt.objects.select_related('person').filter(vehicle__icontains=fvehicle).order_by('created')
+            # pvehicle = form.cleaned_data['vehicle']
+            receipts = Receipt.objects.select_related('person').all().order_by('created')
 
-            return HttpResponseRedirect('/lista/recibo/')
+            # return HttpResponseRedirect('/lista/recibo/')
         else:
-            print('<<<<==== AVISO DE FORMULARIO INVALIDO ====>>>>')
-            criar_filter()
             return render(request, 'person_create.html', {'form': form})
-
         return HttpResponseRedirect('/lista/recibo')
     else:
-        receipts = Receipt.objects.select_related('person').all().order_by('created')
+        receipts = Receipt.objects.select_related('person').filter(vehicle__icontains='sssds').order_by('created')
         context = {'form': ReceiptSearchForm(), 'receipts': receipts}
         return render(request, 'lista_recibo.html', context)
 
 
-def criar_filter(**data):
-    vehicle=data['vehicle']
-    print(vehicle)
+# def criar_filter(vehicle):
+#     vehicle = vehicle
+#     print(vehicle)
 
-    return vehicle
+    # return vehicle
 
 
 def search_receipt(request):

@@ -56,14 +56,18 @@ ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
                                                 extra=5)
 
 
-class ReceiptSearchForm(forms.ModelForm):
-    person = forms.ModelChoiceField(queryset=Person.objects.all(),
+class ReceiptSearchForm(forms.Form):
+    person = forms.ModelChoiceField(label='Pessoa', queryset=Person.objects.all(),
                                     widget=autocomplete.ModelSelect2(url='core:person-autocomplete',
                                                                      attrs={'style': 'width: 100%;'})
                                     )
     author = forms.ModelChoiceField(queryset=User.objects.all(),
                                     widget=autocomplete.ModelSelect2(attrs={'style': 'width: 100%;'})
                                     )
+
+    vehicle = forms.CharField(label='Veículo', required=False)
+    chassis = forms.CharField(label='Chassi', required=False)
+    color = forms.CharField(label='Cor', required=False)
 
     class Meta:
         model = Receipt
