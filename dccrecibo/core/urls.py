@@ -17,6 +17,7 @@ urlpatterns = [
 
     path('lista/', views.receipt_return, name='receipt_return'),
     path('lista/recibo/', views.receipt_return, name='receipt_return'),
+    path('lista/recibo2/', views.receipt_return2, name='receipt_return2'),
 
     path('pessoa/novo/', views.person_create, name='person_create'),
 

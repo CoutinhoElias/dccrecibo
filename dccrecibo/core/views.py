@@ -111,22 +111,47 @@ def receipt_return(request):
             return render(request, 'person_create.html', {'form': form})
         return HttpResponseRedirect('/lista/recibo')
     else:
-        receipts = Receipt.objects.select_related('person').filter(vehicle__icontains='sssds').order_by('created')
-        context = {'form': ReceiptSearchForm(), 'receipts': receipts}
+        vehicle = request.GET.get('vehicle')
+        if vehicle:
+            print(vehicle, '<<=== VEICULO')
+            receipts = Receipt.objects.select_related('person').filter(vehicle__icontains=vehicle,).order_by('created')
+            context = {'form': ReceiptSearchForm(), 'receipts': receipts}
+        else:
+            receipts = Receipt.objects.select_related('person').all()
+            context = {'form': ReceiptSearchForm(), 'receipts': receipts}
         return render(request, 'lista_recibo.html', context)
 
 
-# def criar_filter(vehicle):
-#     vehicle = vehicle
-#     print(vehicle)
+def criar_filtro(regras_filtro):
+    filtro = {}
 
-    # return vehicle
+    if 'vehicle' in regras_filtro:
+        filtro['vehicle__icontains'] = regras_filtro['vehicle']
+
+    if 'person' in regras_filtro:
+        filtro['person__name__icontains'] = regras_filtro['person']
+    # E por ai vai
+    return filtro
+
+
+# ----------------------------------------------------------------------------------------------------------
+def receipt_return2(request):
+    form = ReceiptSearchForm(request.GET or None)
+    if form.is_valid():  # Existe filtro
+        filtro = criar_filtro(form.cleaned_data)
+        print(**filtro)
+        receipts = Receipt.objects.select_related('person').filter(**filtro).order_by('created')
+    else:  # Lista todo mundo
+        receipts = Receipt.objects.select_related('person').all().order_by('created')
+    context = {'form': form, 'receipts': receipts}
+    return render(request, 'lista_recibo.html', context)
 
 
 def search_receipt(request):
     receipt_list = Receipt.objects.all()
     receipt_filter = ReceiptFilter(request.GET, queryset=receipt_list)
     return render(request, 'lista_recibo.html', {'filter': receipt_filter})
+# ----------------------------------------------------------------------------------------------------------
 
 
 def person_create(request):

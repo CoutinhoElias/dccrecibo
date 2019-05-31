@@ -58,10 +58,11 @@ ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
 
 class ReceiptSearchForm(forms.Form):
     person = forms.ModelChoiceField(label='Pessoa', queryset=Person.objects.all(),
+                                    required=False,
                                     widget=autocomplete.ModelSelect2(url='core:person-autocomplete',
-                                                                     attrs={'style': 'width: 100%;'})
-                                    )
-    author = forms.ModelChoiceField(queryset=User.objects.all(),
+                                                                     attrs={'style': 'width: 100%;'}))
+    author = forms.ModelChoiceField(label='Usuário', queryset=User.objects.all(),
+                                    required=False,
                                     widget=autocomplete.ModelSelect2(attrs={'style': 'width: 100%;'})
                                     )
 
