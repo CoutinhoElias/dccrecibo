@@ -4,7 +4,9 @@
 {% block container %}
 
     <div class="card larger" id="card-radius">
-
+        <div class="card-panel indigo darken-4 center " id="empty-panel">
+            <span class="white-text">EFETUE SEU FILTRO:</span>
+        </div>
         <form method="GET" action=".">
 
             <div class="card-content">
@@ -46,9 +48,9 @@
 
                 </tr>
             {% empty %}
-                <li>
-                    Sem registros
-                </li>
+                    <div class="card-panel indigo darken-4 center " id="empty-panel">
+                        <span class="white-text">NENHUM REGISTRO ENCONTRADO!</span>
+                    </div>
             {% endfor %}
         </table>
     </div>

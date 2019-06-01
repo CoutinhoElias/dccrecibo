@@ -111,14 +111,21 @@ def receipt_return(request):
             return render(request, 'person_create.html', {'form': form})
         return HttpResponseRedirect('/lista/recibo')
     else:
-        vehicle = request.GET.get('vehicle')
-        if vehicle:
-            print(vehicle, '<<=== VEICULO')
-            receipts = Receipt.objects.select_related('person').filter(vehicle__icontains=vehicle,).order_by('created')
-            context = {'form': ReceiptSearchForm(), 'receipts': receipts}
-        else:
-            receipts = Receipt.objects.select_related('person').all()
-            context = {'form': ReceiptSearchForm(), 'receipts': receipts}
+        person = request.GET.get('person') or 0
+        vehicle = request.GET.get('vehicle') or '#@!%$#'
+        chassis = request.GET.get('chassis') or '#@!%$#'
+        color = request.GET.get('color') or '#@!%$#'
+        author = request.GET.get('author') or 0
+
+
+        receipts = Receipt.objects.select_related('person').filter(Q(vehicle__icontains=vehicle) |
+                                                                   Q(person=person) |
+                                                                   Q(chassis__icontains=chassis) |
+                                                                   Q(color__icontains=color) |
+                                                                   Q(author=author)
+                                                                   ).order_by('created')
+        context = {'form': ReceiptSearchForm(), 'receipts': receipts}
+
         return render(request, 'lista_recibo.html', context)
 
 

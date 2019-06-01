@@ -10,7 +10,6 @@ from dccrecibo.core.models import Person, Receipt, ReceiptMovimento
 
 
 class PersonForm(forms.ModelForm):
-
     class Meta:
         model = Person
         fields = (
@@ -34,21 +33,21 @@ class ReceiptForm(forms.ModelForm):
 
     layout = Layout(
         Fieldset("A impressão desta tela não tem valor de recibo.",
-                     Row('person', 'vehicle'),
-                     Row('chassis', 'color'),
-                     Row('author'),
-                     Row('observation'),
+                 Row('person', 'vehicle'),
+                 Row('chassis', 'color'),
+                 Row('author'),
+                 Row('observation'),
                  )
-        )
+    )
 
 
 ReceiptMovimentoFormSet = inlineformset_factory(Receipt, ReceiptMovimento,
                                                 widgets={'form_of_payment': autocomplete.ModelSelect2(
-                                                             attrs={'style': 'width: auto;'}),
+                                                    attrs={'style': 'width: auto;'}),
 
-                                                         'kind': autocomplete.ModelSelect2(
-                                                             attrs={'style': 'width: auto;'})
-                                                         },
+                                                    'kind': autocomplete.ModelSelect2(
+                                                        attrs={'style': 'width: auto;'})
+                                                },
                                                 can_delete=True,
                                                 fields=('form_of_payment',
                                                         'kind',
@@ -82,9 +81,11 @@ class ReceiptSearchForm(forms.Form):
         exclude = ()
 
     layout = Layout(
-        Fieldset("Efetue sua pesquisa.",
-                     Row('person', 'vehicle'),
-                     Row('chassis', 'color'),
-                     Row('author'),
+        Fieldset("Use o critério OU em suas buscas."
+                 "Ou Cliente IGUAL a 'X', OU Veículo contendo caractares 'xyz', OU Chassi contendo caractares '123...',"
+                 "OU Usuário IGUAL ao selecionado.",
+                 Row('person', 'vehicle'),
+                 Row('chassis', 'color'),
+                 Row('author'),
                  )
-        )
+    )

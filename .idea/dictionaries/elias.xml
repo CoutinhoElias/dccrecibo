@@ -6,12 +6,16 @@
       <w>agora</w>
       <w>aviso</w>
       <w>bairro</w>
+      <w>buscas</w>
       <w>cadastro</w>
+      <w>caractares</w>
       <w>cartão</w>
       <w>chassi</w>
       <w>cidade</w>
       <w>cliente</w>
       <w>cnpj</w>
+      <w>contendo</w>
+      <w>critério</w>
       <w>crédito</w>
       <w>dados</w>
       <w>dinheiro</w>
@@ -25,6 +29,7 @@
       <w>formulario</w>
       <w>generatepdf</w>
       <w>icontains</w>
+      <w>igual</w>
       <w>instalacão</w>
       <w>inválido</w>
       <w>lista</w>
@@ -44,7 +49,9 @@
       <w>recibo</w>
       <w>recibos</w>
       <w>registro</w>
+      <w>selecionado</w>
       <w>serviço</w>
+      <w>suas</w>
       <w>tipo</w>
       <w>useradress</w>
       <w>usuário</w>
