@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69216de2-1f98-4417-adff-10f58dcdb009" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/elias.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/elias.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dccrecibo/core/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/dccrecibo/core/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dccrecibo/core/templates/lista_recibo.html" beforeDir="false" afterPath="$PROJECT_DIR$/dccrecibo/core/templates/lista_recibo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dccrecibo/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dccrecibo/core/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="69216de2-1f98-4417-adff-10f58dcdb009" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dccrecibo/core/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="131">
@@ -51,6 +45,15 @@
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -221,13 +224,6 @@
               <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="dccrecibo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
-              <item name="dccrecibo" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -382,12 +378,12 @@
     <frame x="49" y="25" width="1317" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49860725" visible="true" weight="0.21406491" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49860725" visible="true" weight="0.21406491" />
       <window_info id="Structure" order="1" sideWeight="0.5013928" side_tool="true" weight="0.23196276" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32828283" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4996121" visible="true" weight="0.23778501" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4996121" visible="true" weight="0.23778501" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36970684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -583,13 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dccrecibo/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -757,6 +746,13 @@
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
         </state>
       </provider>
     </entry>
