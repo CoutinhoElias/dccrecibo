@@ -29,7 +29,7 @@ class ReceiptForm(forms.ModelForm):
 
     class Meta:
         model = Receipt
-        exclude = ()
+        exclude = ('company',)
 
     layout = Layout(
         Fieldset("A impressão desta tela não tem valor de recibo.",

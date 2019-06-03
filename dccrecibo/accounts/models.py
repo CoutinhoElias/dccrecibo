@@ -6,6 +6,8 @@ from django.db import models
 
 class UserAdress(User):
     nomecompleto = models.CharField('Nome Completo', max_length=100, null=False, blank=False)
+    company = models.ForeignKey("core.company", related_name="children",
+                                on_delete=models.CASCADE, verbose_name="Empresa")
     cep = models.CharField('Cep', max_length=10, null=True, blank=False)
     logradouro = models.CharField('Logradouro', max_length=100)
     numero = models.CharField('Número', max_length=10, null=False, blank=False)

@@ -10,6 +10,20 @@ from django.urls import reverse
 from num2words import num2words
 
 
+class Company(models.Model):
+    # cdalterdata = models.CharField('Cód. Alterdata', max_length=6)
+    name = models.CharField('Nome Empresa (Fantasia)', max_length=100)
+    cpf_cnpj = models.CharField('CPF/CNPJ', max_length=18, unique=True)
+    uf = models.CharField('UF', max_length=18, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Empresas'
+        verbose_name = 'Empresa'
+
+
 class Person(models.Model):
     # cdalterdata = models.CharField('Cód. Alterdata', max_length=6)
     name = models.CharField('Nome', max_length=100)
@@ -26,6 +40,7 @@ class Person(models.Model):
 class Receipt(models.Model):
     person = models.ForeignKey('core.Person', on_delete=models.CASCADE,
                                verbose_name='Cliente')
+    company = models.ForeignKey('core.Company', on_delete=models.CASCADE, verbose_name='Empresa que trabalha')
     vehicle = models.CharField('Veículo', max_length=100)
     chassis = models.CharField('Chassi', max_length=100)
     color = models.CharField('Cor', max_length=100)

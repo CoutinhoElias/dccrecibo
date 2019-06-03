@@ -2,7 +2,13 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from .models import Person, ReceiptMovimento, Receipt
+from .models import Person, ReceiptMovimento, Receipt, Company
+
+
+@admin.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'id', 'name')
+    search_fields = ('id', 'name')
 
 
 class ReceiptMovimentoInline(admin.TabularInline):

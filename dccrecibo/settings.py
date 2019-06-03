@@ -61,7 +61,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'dccrecibo.urls'
 
-#SELECT2_CSS = 'assets/css/select2.css'
+# SELECT2_CSS = 'assets/css/select2.css'
 
 TEMPLATES = [
     {
